@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.article h1 {
+  @apply text-5xl font-mono font-bold mt-8 mb-4;
+}
+
+.article h2 {
+  @apply text-4xl font-mono font-semibold mt-6 mb-3;
+}
+
+.article h3 {
+  @apply text-3xl font-mono font-medium mt-4 mb-2;
+}
+
+.article h4 {
+  @apply text-2xl font-mono font-medium mt-4 mb-2;
+}
+
+.article h5 {
+  @apply text-xl font-mono font-medium mt-3 mb-1;
+}
+
+.article h6 {
+  @apply text-lg font-mono font-medium mt-2 mb-1;
+}
+
+.article p {
+  @apply text-lg mt-4 mb-4 leading-relaxed;
+}
+
+.article a {
+  @apply text-primary underline;
+}
+
+.article h1 a,
+.article h2 a,
+.article h3 a,
+.article h4 a,
+.article h5 a,
+.article h6 a {
+  @apply no-underline text-inherit;
+}
+
+.article img {
+  @apply w-full h-auto rounded-lg shadow-lg my-4;
+}
+
+.custom-list-style ul {
+  @apply list-disc ml-6;
+}
+
+.custom-list-style ol {
+  @apply list-decimal ml-6;
+}
+
+.custom-list-style ul ul {
+  @apply list-[square] ml-6;
+}
+
+.custom-list-style ul ul ul {
+  @apply list-disc ml-6;
+}
+
+.custom-list-style ul ul ul ul {
+  @apply list-[square] ml-6;
+}
+
+.custom-list-style li {
+  @apply text-lg mb-2;
+}
+
+.article blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+}
+
+.article pre {
+  @apply p-4 bg-slate-800 rounded my-2 text-gray-100 overflow-x-auto;
+}
+
+.article pre code {
+  @apply bg-transparent text-gray-100;
+}
+
+.custom-inline-code code {
+  @apply bg-gray-200 dark:bg-gray-700 text-red-600 dark:text-red-400 px-1 rounded;
+}
+
+.custom-table-style table {
+  @apply w-full border-collapse my-4;
+}
+
+.custom-table-style th,
+.custom-table-style td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.custom-table-style th {
+  @apply bg-gray-100 dark:bg-gray-700 font-semibold;
+}
+
+.custom-table-style tr:nth-child(even) {
+  @apply bg-gray-50 dark:bg-gray-700;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
