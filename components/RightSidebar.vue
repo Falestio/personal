@@ -9,12 +9,12 @@ const isBlogArticle = computed(() => {
 </script>
 
 <template>
-  <div class="no-scrollbar">
+  <div>
     <div class="flex items-center justify-end gap-3 pr-8">
       <DarkmodeToggle></DarkmodeToggle>
       <NuxtImg src="/img/logo-personal.png" class="w-36 h-auto"/>
     </div>
-    <div class="p-4">
+    <div class="p-4" v-if="blogStore.currentArticle?.body?.toc">
       <TableOfContents
         v-if="isBlogArticle"
         :toc="blogStore.currentArticle?.body?.toc"
@@ -22,3 +22,7 @@ const isBlogArticle = computed(() => {
     </div>
   </div>
 </template>
+
+<style>
+
+</style>

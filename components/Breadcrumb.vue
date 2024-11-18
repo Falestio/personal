@@ -11,14 +11,19 @@ const formatBreadcrumbName = (name) => {
     .join(" ");
 };
 
+const excludedPaths = ["/", "/about"];
+
 const breadcrumbs = computed(() => {
   const paths = route.path.split("/").filter((p) => p);
-  const breadcrumbPaths = paths.map((path, index) => {
-    return {
-      name: formatBreadcrumbName(path),
-      path: "/" + paths.slice(0, index + 1).join("/"),
-    };
-  });
+  const breadcrumbPaths = paths
+    .map((path, index) => {
+      const fullPath = "/" + paths.slice(0, index + 1).join("/");
+      return {
+        name: formatBreadcrumbName(path),
+        path: fullPath,
+      };
+    })
+    .filter((breadcrumb) => !excludedPaths.includes(breadcrumb.path));
 
   return breadcrumbPaths;
 });
@@ -28,15 +33,9 @@ const breadcrumbs = computed(() => {
   <nav aria-label="breadcrumb">
     <ol class="flex flex-col space-x-2">
       <li v-if="!route.path.startsWith('/blog')" class="flex items-center">
-        <NuxtLink to="/blog" class="hover:underline">
-          Blog
-        </NuxtLink>
+        <NuxtLink to="/blog" class="hover:underline"> Blog </NuxtLink>
       </li>
-      <li
-        v-for="(crumb, index) in breadcrumbs"
-        :key="index"
-        class="block"
-      >
+      <li v-for="(crumb, index) in breadcrumbs" :key="index" class="block">
         <NuxtLink
           v-if="index < breadcrumbs.length - 1"
           :to="crumb.path"
@@ -45,7 +44,11 @@ const breadcrumbs = computed(() => {
           {{ crumb.name }}
         </NuxtLink>
         <span v-else class="text-primary">{{ crumb.name }}</span>
-        <span v-if="index < breadcrumbs.length - 1 && route.path.startsWith('/blog')" class="mx-2 text-gray-400"
+        <span
+          v-if="
+            index < breadcrumbs.length - 1 && route.path.startsWith('/blog')
+          "
+          class="mx-2 text-gray-400"
           >/</span
         >
       </li>

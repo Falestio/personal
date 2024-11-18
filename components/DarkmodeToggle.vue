@@ -13,9 +13,10 @@ const toggleColorMode = () => {
     <button
       @click="toggleColorMode"
       class="w-24 h-8 flex items-center justify-center"
+      v-if="colorMode.preference == 'dark' || colorMode.preference == 'light'"
     >
-      <PhosphorIconSun class="text-2xl" v-if="!isDark" />
-      <PhosphorIconMoon class="text-white text-2xl" v-else />
+      <PhosphorIconMoon class="text-2xl" v-if="colorMode.preference === 'dark'" />
+      <PhosphorIconSun class="text-2xl" v-else />
     </button>
   </div>
 </template>

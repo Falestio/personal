@@ -10,7 +10,7 @@ const { data } = await useAsyncData("home", () => queryContent("blog").find());
         v-for="article in data"
         :key="article._id"
         :to="article._path"
-        class="p-4 border bg-gray-100 dark:bg-slate-700 rounded shadow transform transition-transform duration-300 hover:scale-105 flex"
+        class="p-4 border-gray-400-2 hover:border-fruit-salad-500 bg-gray-100 dark:bg-slate-700 rounded shadow flex"
       >
         <img
           :src="article.thumbnail"

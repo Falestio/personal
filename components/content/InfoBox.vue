@@ -1,8 +1,8 @@
 <template>
-  <div class="rounded-lg shadow-md overflow-hidden flex">
+  <div class="rounded-lg shadow-md overflow-hidden flex mb-4">
     <div :class="cardClass" class="w-4 min-h-full"></div>
     <div class="bg-white dark:bg-gray-800">
-      <div :class="titleClass" class="flex items-center gap-2 px-2">
+      <div :class="titleClass" class="flex items-center gap-2 px-2 py-2">
         <PhosphorIconInfo v-if="props.type === 'info'" class="text-blue-500" />
         <PhosphorIconQuestion
           v-else-if="props.type === 'question'"
@@ -12,9 +12,9 @@
           v-else-if="props.type === 'warning'"
           class="text-yellow-500"
         />
-        <p class="text-xl font-bold rounded">
+        <span class="text-xl font-bold rounded">
           {{ props.title }}
-        </p>
+        </span>
       </div>
         <div class="px-2">
           <slot />
@@ -52,11 +52,11 @@ const cardClass = computed(() => {
 const titleClass = computed(() => {
   switch (props.type) {
     case "info":
-      return "bg-blue-100 text-blue-900";
+      return "text-blue-200";
     case "question":
-      return "bg-green-100 text-green-900";
+      return "text-green-200";
     case "warning":
-      return "bg-yellow-1a00 text-yellow-900";
+      return "text-yellow-200";
     default:
       return "";
   }

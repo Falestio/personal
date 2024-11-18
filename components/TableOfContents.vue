@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <div>
-    <div class="border-2 rounded p-6">
+    <div class="border-2 border-gray-600 rounded p-6">
       <h2 class="text-2xl font-mono">Table of Content</h2>
       <ul v-if="toc && toc.links" class="space-y-2">
         <li v-for="link in toc.links" :key="link.id" class="ml-2">
@@ -29,7 +29,7 @@ const props = defineProps({
                 >
                   <a
                     :href="`#${subChild.id}`"
-                    class="text-blue-500 hover:underline"
+                    class="text-fruit-salad-500 hover:underline"
                   >
                     {{ subChild.text }}
                   </a>
@@ -51,7 +51,7 @@ ul {
 
 li::before {
   content: "•";
-  color: #1d4ed8; /* Tailwind's blue-500 */
+  color: #689a60;
   display: inline-block;
   width: 1em;
   margin-left: -1em;

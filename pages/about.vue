@@ -21,6 +21,16 @@ const colorMode = useColorMode();
             computing and backend skills. Always curious and excited to take on
             new challenges while growing along the way!
           </p>
+          <div class="flex gap-4 items-center">
+            <NuxtLink
+              to="https://www.linkedin.com/in/falestio-hanif-al-hakim-ab4610221"
+              target="_blank"
+            >
+              <PhosphorIconLinkedinLogo
+                class="text-3xl text-fruit-salad-100 hover:bg-[#0A66C2]"
+              ></PhosphorIconLinkedinLogo>
+            </NuxtLink>
+          </div>
         </div>
       </div>
 
@@ -80,9 +90,7 @@ const colorMode = useColorMode();
           <NuxtImg class="w-20 h-20" src="/img/pojokoding-favicon.svg" />
           <div>
             <h3 class="text-xl">Pojokoding</h3>
-            <a href="pojokoding.com" class="text-blue-400 underline"
-              >pojokoding.com</a
-            >
+            <p>pojokoding.com</p>
             <p>
               Website belajar pemrograman dengan fitur latihan dalam browser
               seperti codewars dan hackerrank.
@@ -96,16 +104,20 @@ const colorMode = useColorMode();
             src="/img/linux-traefik-grafana-prometheus-idcloudhost.png"
           />
           <div>
-            <h3 class="text-xl">
-              Implementasi Server Autoscaling Menggunakan IDCloudHost Untuk
-              Menjalankan Judge0 (Pengeksekusi Kode)
-            </h3>
+            <NuxtLink
+              to="/blog/autoscaling-pada-idcloudhost-menggunakan-grafana-traefik"
+            >
+              <h3 class="text-xl text-fruit-salad-500 hover:underline">
+                Implementasi Server Autoscaling Menggunakan IDCloudHost Untuk
+                Menjalankan Judge0 (Pengeksekusi Kode)
+              </h3>
+            </NuxtLink>
             <a href="pojokoding.com" class="text-blue-400 underline"></a>
             <ul>
               <li>Administrasi Virtual Machine menggunakan Linux</li>
               <li>Traefik sebagai API Gateway dan Load Balancer</li>
               <li>Prometheus dan Grafana untuk monitoring dan Alerting</li>
-              <li>API IDCloudHost untuk memanipulasi virtual machines</li>
+              <li>API IDCloudHost untuk memodifikasi virtual machines</li>
             </ul>
           </div>
         </div>
@@ -147,9 +159,6 @@ const colorMode = useColorMode();
           <p class="text-sm">2021 - 2024</p>
         </div>
       </div>
-
-      <!-- contact -->
-      <h2 class="text-2xl font-bold my-4">Contact</h2>
     </div>
   </div>
 </template>
