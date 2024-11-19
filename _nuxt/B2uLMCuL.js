@@ -1,1 +1,0 @@
-import{m as t,f as r,g as o,C as s}from"./CQIlpaMC.js";const a={},n={class:"font-semibold bg-gray-200 dark:bg-gray-700 text-fruit-salad-600 dark:text-fruit-salad-400 px-1 rounded"};function d(e,c){return r(),o("code",n,[s(e.$slots,"default")])}const f=t(a,[["render",d]]);export{f as default};
