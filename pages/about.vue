@@ -89,8 +89,9 @@ const colorMode = useColorMode();
         <div class="flex gap-4 mb-8">
           <NuxtImg class="w-20 h-20" src="/img/pojokoding-favicon.svg" />
           <div>
-            <h3 class="text-xl">Pojokoding</h3>
-            <p>pojokoding.com</p>
+            <NuxtLink to="https://repository.telkomuniversity.ac.id/pustaka/216970/sistem-eksekusi-dan-pengetesan-kode-otomatis-untuk-website-belajar-pemrograman-dalam-bentuk-buku-karya-ilmiah.html">
+              <h3 class="text-xl">Pojokoding</h3>
+            </NuxtLink>
             <p>
               Website belajar pemrograman dengan fitur latihan dalam browser
               seperti codewars dan hackerrank.

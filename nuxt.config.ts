@@ -9,9 +9,13 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/image",
     "nuxt-phosphor-icons",
-    "@nuxtjs/color-mode"
+    "@nuxtjs/color-mode",
+    "nuxt-gtag"
   ],
   ssr: true,
+  gtag: {
+    id: "G-3QHM1F5N2M"    
+  },
   content: {
     highlight: {
       theme: 'tokyo-night'
