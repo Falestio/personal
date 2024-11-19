@@ -2,12 +2,6 @@
 const { status, data } = await useLazyAsyncData("home", () =>
   queryContent("blog").find()
 );
-
-watch(data, (newData) => {
-  if (newData) {
-    console.log("Fetched blog articles:", newData);
-  }
-});
 </script>
 
 <template>
@@ -28,7 +22,7 @@ watch(data, (newData) => {
           v-for="article in data"
           :key="article._id"
           :to="article._path"
-          class="p-4 border rounded shadow transform transition-transform duration-300 hover:scale-105 flex"
+          class="p-4 border-2 border-gray-500 hover:border-fruit-salad-600 bg-gray-100 dark:bg-slate-700 rounded shadow flex"
         >
           <img
             :src="article.thumbnail"
