@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
 
+  build: { 
+    transpile: ["shiki"],
+  },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxt/content",

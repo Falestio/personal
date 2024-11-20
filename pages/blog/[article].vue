@@ -14,7 +14,7 @@ useSeoMeta({
   ogTitle: () => `${data.value.title}`,
   ogDescription: () => `${data.value.description}`,
   ogImage: () => `${data.value.thumbnail}`,
-})
+});
 </script>
 
 <template>
