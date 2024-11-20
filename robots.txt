@@ -1,1 +1,6 @@
+# START nuxt-robots (indexable)
+User-agent: *
 
+Sitemap: https://www.yourwebsite.com/sitemap.xml
+Sitemap: https://falestio.my.id/sitemap.xml
+# END nuxt-robots
