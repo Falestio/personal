@@ -2,11 +2,16 @@
 const { status, data } = await useLazyAsyncData("home", () =>
   queryContent("blog").find()
 );
+
+useSeoMeta({
+  title: "Daftar Artikel",
+})
+
 </script>
 
 <template>
   <div>
-    <h1 class="font-mono text-5xl mb-6">Daftar Blog</h1>
+    <h1 class="font-mono text-5xl mb-6">Daftar Artikel</h1>
 
     <template v-if="status === 'pending'">
       <p>Loading...</p>

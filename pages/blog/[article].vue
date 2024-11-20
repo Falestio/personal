@@ -7,6 +7,14 @@ const { status, data } = await useLazyAsyncData("article", () =>
 );
 
 blogStore.currentArticle = data;
+
+useSeoMeta({
+  title: () => `${data.value.title}`,
+  description: () => `${data.value.description}`,
+  ogTitle: () => `${data.value.title}`,
+  ogDescription: () => `${data.value.description}`,
+  ogImage: () => `${data.value.thumbnail}`,
+})
 </script>
 
 <template>

@@ -1,8 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
+
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxt/content",
@@ -10,15 +12,24 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-phosphor-icons",
     "@nuxtjs/color-mode",
-    "nuxt-gtag"
+    "nuxt-gtag",
+    "@nuxtjs/seo",
   ],
-  ssr: true,
-  gtag: {
-    id: "G-3QHM1F5N2M"    
+
+  site: {
+    url: "https://falestio.my.id",
+    name: "Falestio personal website",
   },
+
+  ssr: true,
+
+  gtag: {
+    id: "G-3QHM1F5N2M",
+  },
+
   content: {
     highlight: {
-      theme: 'tokyo-night'
-    }
-  }
-})
+      theme: "tokyo-night",
+    },
+  },
+});

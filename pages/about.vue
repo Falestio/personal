@@ -1,5 +1,10 @@
 <script setup>
 const colorMode = useColorMode();
+
+useSeoMeta({
+  title: "Falestio | About",
+  description: "Always curious and excited to take on new challenges while growing along the way!"
+})
 </script>
 
 <template>

@@ -2,6 +2,12 @@
 const { status, data } = await useLazyAsyncData("home", () =>
   queryContent("blog").find()
 );
+
+useSeoMeta({
+  title: "Falestio | Personal Website",
+  description: "I'm a software engineer interested in cloud computing and backend in general."
+})
+
 </script>
 
 <template>
