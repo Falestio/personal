@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
 
-  build: { 
+  build: {
     transpile: ["shiki"],
   },
 
@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   gtag: {
+    enabled: process.env.NODE_ENV === "production",
     id: "G-3QHM1F5N2M",
   },
 
