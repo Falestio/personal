@@ -12,7 +12,8 @@ useSeoMeta({
 
 <template>
   <div>
-    <h1 class="font-mono text-5xl mb-8">Falestio Hanif Al Hakim</h1>
+    <h1 class="font-mono text-5xl mb-4">Falestio Hanif Al Hakim</h1>
+    <span class="font-mono text-5xl mb-8">Paham jika bisa menjelaskan</span>
 
     <template v-if="status === 'pending'">
       <p>Loading...</p>
