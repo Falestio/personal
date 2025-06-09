@@ -10,19 +10,22 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "@nuxtjs/tailwindcss",
     "@nuxt/content",
     "@pinia/nuxt",
     "@nuxt/image",
     "nuxt-phosphor-icons",
-    "@nuxtjs/color-mode",
     "nuxt-gtag",
     "@nuxtjs/seo",
+    "@nuxt/ui",
   ],
 
   site: {
     url: "https://falestio.my.id",
     name: "Falestio personal website",
+  },
+
+  colorMode: {
+    preference: 'system'
   },
 
   ssr: true,
