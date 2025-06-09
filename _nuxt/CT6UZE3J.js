@@ -1,1 +1,0 @@
-import{_ as r}from"./DlAUqK2U.js";import{c as t,e as o,B as s}from"./qH_pwYbJ.js";const a={},n={class:"font-semibold bg-gray-200 dark:bg-gray-700 text-fruit-salad-600 dark:text-fruit-salad-400 px-1 rounded"};function c(e,d){return t(),o("code",n,[s(e.$slots,"default")])}const _=r(a,[["render",c]]);export{_ as default};
