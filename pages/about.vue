@@ -90,7 +90,7 @@ useSeoMeta({
         <div class="flex gap-4 mb-8">
           <NuxtImg class="w-60 h-60" src="/img/linux-traefik-grafana-prometheus-idcloudhost.png" />
           <div>
-            <h3 class="text-2xl" :class="colorMode.preference === 'dark' ? 'text-fruit-salad-500' : 'text-fruit-salad-700'" class="hover:underline mb-3">
+            <h3 class="text-2xl" :class="colorMode.preference === 'dark' ? 'text-fruit-salad-500' : 'text-fruit-salad-700'">
               Server: Implementasi Autoscaling Manual untuk Server IDCloudHost
             </h3>
 
