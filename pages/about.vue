@@ -53,23 +53,6 @@ useSeoMeta({
         </div>
       </div>
 
-      <div class="flex justify-between gap-4">
-        <div class="flex gap-4">
-          <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'light'" src="/img/logo-telu-light.png" />
-          <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'dark'" src="/img/logo-telu-dark.png" />
-          <div>
-            <h3 class="text-xl">Web Programming Practicum Assistant</h3>
-            <p>Telkom University · Part Time</p>
-            <p>Sep 2023 - Des 2023 · 4 Months</p>
-            <p class="text-sm">Bandung · OnSite</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <NuxtImg src="/img/laravel.png" class="w-auto h-10" />
-          <NuxtImg src="/img/php.png" class="w-auto h-10" />
-        </div>
-      </div>
-
       <!-- education -->
       <h2 class="text-2xl font-bold my-4">Education</h2>
 

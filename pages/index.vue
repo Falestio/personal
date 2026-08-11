@@ -6,7 +6,7 @@ const { status, data } = await useLazyAsyncData("home", () =>
 useSeoMeta({
   title: "Falestio | Personal Website",
   description:
-    "I'm a software engineer interested in cloud computing and backend in general.",
+    "I'm a Odoo Developer",
 });
 </script>
 
