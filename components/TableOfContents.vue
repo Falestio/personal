@@ -29,7 +29,7 @@ const props = defineProps({
                 >
                   <a
                     :href="`#${subChild.id}`"
-                    class="text-fruit-salad-500 hover:underline"
+                    class="text-fruit-salad-300 hover:underline"
                   >
                     {{ subChild.text }}
                   </a>
