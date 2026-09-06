@@ -33,15 +33,19 @@ pageToc.value = {
         { id: "bapelkes-eoffice", text: "E-Office dan Covenant" },
         { id: "bapelkes-risk", text: "Risk Management" },
       ] },
-      { id: "proyek-lain", text: "Proyek Lain", children: [
+      { id: "modul-odoo-store", text: "Modul di Odoo Store", children: [
         { id: "lain-seafile", text: "Third Party Image Storage (Seafile)" },
         { id: "lain-daterange", text: "Search by Date Range di List View" },
         { id: "lain-hariliburi", text: "Fetch Data Hari Libur Nasional Indonesia" },
         { id: "lain-exportexcel", text: "Export List View to Excel" },
+      ] },
+      { id: "opensource", text: "Kontribusi Open Source", children: [
         { id: "lain-opensource", text: "Kontribusi Open Source (non Odoo)" },
+      ] },
+      { id: "proyek-lain", text: "Proyek Lain", children: [
+        { id: "lain-pyqt", text: "Aplikasi Desktop: Input Data Inspeksi Kain" },
         { id: "lain-autoscaling", text: "Server: Autoscaling IDCloudHost" },
         { id: "lain-d3", text: "Visualisasi Data: Odoo Module Dependency Graph" },
-        { id: "lain-pyqt", text: "Aplikasi Desktop: Input Data Inspeksi Kain" },
       ] },
     ] },
   ],
@@ -261,7 +265,10 @@ onBeforeUnmount(() => {
             E-Office, Covenant, dan Risk Management.
           </p>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="E-Office dan Covenant">
+          <ProjectSection
+            :images="['/about-img/covenant1.png', '/about-img/covenant2.png', '/about-img/covenant3.png']"
+            imageAlt="E-Office dan Covenant"
+          >
             <h4 id="bapelkes-eoffice" class="text-xl font-semibold mb-1">E-Office dan Covenant</h4>
             <ul>
               <li>Input permohonan dokumen perizinan, akta, kontrak, legal opinion, SK</li>
@@ -271,9 +278,6 @@ onBeforeUnmount(() => {
               <li>Pengelolaan rapat dan notulensi</li>
               <li>Pengelolaan kegiatan pengurus</li>
             </ul>
-          </ProjectSection>
-
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Risk Management">
             <h4 id="bapelkes-risk" class="text-xl font-semibold mb-1">Risk Management</h4>
             <ul>
               <li>Risk Assessment</li>
@@ -281,11 +285,12 @@ onBeforeUnmount(() => {
               <li>Rekapitulasi Risk</li>
             </ul>
           </ProjectSection>
+
         </div>
 
-        <!-- Proyek Lain -->
-        <div id="proyek-lain">
-          <h3 class="text-2xl text-fruit-salad-300 mb-3">Proyek Lain</h3>
+        <!-- Modul di Odoo Store -->
+        <div id="modul-odoo-store" class="mb-10">
+          <h3 class="text-2xl text-fruit-salad-300 mb-3">Modul di Odoo Store</h3>
 
           <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Third Party Image Storage (Seafile)">
             <h4 id="lain-seafile" class="text-xl font-semibold mb-1">Third Party Image Storage (Seafile)</h4>
@@ -297,12 +302,33 @@ onBeforeUnmount(() => {
             </ul>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Search by Date Range di List View">
+          <ProjectSection
+            :images="['/about-img/daterangethumb.png','/about-img/daterange1.png', '/about-img/daterange2.png']"
+            imageAlt="Search by Date Range di List View"
+          >
             <h4 id="lain-daterange" class="text-xl font-semibold mb-1">Search by Date Range di List View</h4>
+
+            <NuxtLink to="https://apps.odoo.com/apps/modules/18.0/filter_by_date_range" target="_blank"
+              class="inline-block text-fruit-salad-300 hover:text-fruit-salad-700 font-medium hover:underline mb-2">
+              <span class="flex items-center gap-1">
+                Odoo Store
+                <PhosphorIconArrowUpRight />
+              </span>
+            </NuxtLink>
+
             <p>Memungkinkan melakukan filter range tanggal di list view melalui UI yang simpel</p>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Fetch Data Hari Libur Nasional Indonesia">
+          <ProjectSection
+            :images="[
+              '/about-img/holidaythumb.png',
+              '/about-img/holiday2.png',
+              '/about-img/holiday3.png',
+              '/about-img/holiday4.png',
+              '/about-img/holiday5.png',
+            ]"
+            imageAlt="Fetch Data Hari Libur Nasional Indonesia"
+          >
             <h4 id="lain-hariliburi" class="text-xl font-semibold mb-1">
               Fetch Data Hari Libur Nasional Indonesia
             </h4>
@@ -324,16 +350,60 @@ onBeforeUnmount(() => {
           </ProjectSection>
 
           <ProjectSection
-            :images="['/about-img/listtoexcel1.png', '/about-img/listtoexcel2.png']"
+            :images="['/about-img/exportlistthumb.png', '/about-img/exportlist1.png', '/about-img/exportlist2.png']"
             imageAlt="Export List View to Excel"
           >
             <h4 id="lain-exportexcel" class="text-xl font-semibold mb-1">Export List View to Excel</h4>
+
+            <NuxtLink to="https://apps.odoo.com/apps/modules/18.0/export_current_list" target="_blank"
+              class="inline-block text-fruit-salad-300 hover:text-fruit-salad-700 font-medium hover:underline mb-2">
+              <span class="flex items-center gap-1">
+                Odoo Store
+                <PhosphorIconArrowUpRight />
+              </span>
+            </NuxtLink>
+
             <p>Export data yang muncul di list view sekarang ke Excel</p>
           </ProjectSection>
+        </div>
+
+        <!-- Kontribusi Open Source -->
+        <div id="opensource" class="mb-10">
+          <h3 class="text-2xl text-fruit-salad-300 mb-3">Kontribusi Open Source</h3>
 
           <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Kontribusi Open Source (non Odoo)">
             <h4 id="lain-opensource" class="text-xl font-semibold mb-1">Kontribusi Open Source (non Odoo)</h4>
             <p class="italic">Belum ada</p>
+          </ProjectSection>
+        </div>
+
+        <!-- Proyek Lain -->
+        <div id="proyek-lain">
+          <h3 class="text-2xl text-fruit-salad-300 mb-3">Proyek Lain</h3>
+
+          <ProjectSection :images="['/about-img/pyqt-logo.png']"
+            imageAlt="Aplikasi Desktop: Input Data Inspeksi Kain Terintegrasi Odoo ERP">
+            <h4 id="lain-pyqt" class="text-xl font-semibold mb-1">
+              Aplikasi Desktop: Input Data Inspeksi Kain Terintegrasi Odoo ERP
+            </h4>
+
+            <NuxtLink to="https://drive.google.com/file/d/1ZCmEYt9rGg7JHlrvZdH3EODVxSq8WA7T/view?usp=sharing"
+              target="_blank"
+              class="inline-block text-fruit-salad-300 hover:text-fruit-salad-700 font-medium hover:underline mb-2">
+              <span class="flex items-center gap-1">
+                Dokumentasi
+                <PhosphorIconArrowUpRight />
+              </span>
+            </NuxtLink>
+
+            <p class="mb-2">Aplikasi ini dipasang di salah satu pabrik tekstil di Bandung. Bertujuan mempermudah
+              proses input data inspeksi kain sebelum keluar pabrik untuk dijual. Data yang diinput adalah jumlah kain,
+              daftar cacat kain, dan detail cacat kain. Setelah kain selesai diinspeksi langkah akhir adalah melakukan
+              print barcode yang berisikan informasi terkait kain tersebut.</p>
+            <ul>
+              <li>PyQT6 (Python)</li>
+              <li>Odoo External API (XML-RPC)</li>
+            </ul>
           </ProjectSection>
 
           <ProjectSection :images="['/img/linux-traefik-grafana-prometheus-idcloudhost.png']"
@@ -379,31 +449,6 @@ onBeforeUnmount(() => {
             <ul>
               <li>Node Scripts to get module dependency data</li>
               <li>D3.js for visualization</li>
-            </ul>
-          </ProjectSection>
-
-          <ProjectSection :images="['/about-img/pyqt-logo.png']"
-            imageAlt="Aplikasi Desktop: Input Data Inspeksi Kain Terintegrasi Odoo ERP">
-            <h4 id="lain-pyqt" class="text-xl font-semibold mb-1">
-              Aplikasi Desktop: Input Data Inspeksi Kain Terintegrasi Odoo ERP
-            </h4>
-
-            <NuxtLink to="https://drive.google.com/file/d/1ZCmEYt9rGg7JHlrvZdH3EODVxSq8WA7T/view?usp=sharing"
-              target="_blank"
-              class="inline-block text-fruit-salad-300 hover:text-fruit-salad-700 font-medium hover:underline mb-2">
-              <span class="flex items-center gap-1">
-                Dokumentasi
-                <PhosphorIconArrowUpRight />
-              </span>
-            </NuxtLink>
-
-            <p class="mb-2">Aplikasi ini dipasang di salah satu pabrik tekstil di Bandung. Bertujuan mempermudah
-              proses input data inspeksi kain sebelum keluar pabrik untuk dijual. Data yang diinput adalah jumlah kain,
-              daftar cacat kain, dan detail cacat kain. Setelah kain selesai diinspeksi langkah akhir adalah melakukan
-              print barcode yang berisikan informasi terkait kain tersebut.</p>
-            <ul>
-              <li>PyQT6 (Python)</li>
-              <li>Odoo External API (XML-RPC)</li>
             </ul>
           </ProjectSection>
         </div>
