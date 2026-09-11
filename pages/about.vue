@@ -6,6 +6,15 @@ useSeoMeta({
   description: "Always curious and excited to take on new challenges while growing along the way!"
 })
 
+const email = "falestiowork@gmail.com";
+const emailCopied = ref(false);
+
+async function copyEmail() {
+  await navigator.clipboard.writeText(email);
+  emailCopied.value = true;
+  setTimeout(() => (emailCopied.value = false), 2000);
+}
+
 const pageToc = useState("pageToc", () => null);
 
 pageToc.value = {
@@ -23,7 +32,8 @@ pageToc.value = {
         { id: "sierra-sales-flutter", text: "Sales: Odoo x Flutter Sales App" },
         { id: "sierra-sales-dashboard", text: "Sales: Dashboarding" },
         { id: "sierra-ekspedisi", text: "Ekspedisi: Surat Perintah Muat" },
-        { id: "sierra-produksi", text: "Produksi: Revamp Input dan Dashboarding" },
+        { id: "sierra-produksi-planning", text: "Produksi: Production Planning" },
+        { id: "sierra-produksi-oee", text: "Produksi: OEE Data Input dan Dashboarding" },
         { id: "sierra-teknik", text: "Teknik: Maintenance & Downtime" },
         { id: "sierra-purchasing", text: "Purchasing: Approval Dinamis" },
         { id: "sierra-finance", text: "Finance" },
@@ -34,16 +44,16 @@ pageToc.value = {
         { id: "bapelkes-risk", text: "Risk Management" },
       ] },
       { id: "modul-odoo-store", text: "Modul di Odoo Store", children: [
-        { id: "lain-seafile", text: "Third Party Image Storage (Seafile)" },
         { id: "lain-daterange", text: "Search by Date Range di List View" },
         { id: "lain-hariliburi", text: "Fetch Data Hari Libur Nasional Indonesia" },
         { id: "lain-exportexcel", text: "Export List View to Excel" },
       ] },
       { id: "opensource", text: "Kontribusi Open Source", children: [
-        { id: "lain-opensource", text: "Kontribusi Open Source (non Odoo)" },
+        { id: "lain-opensource", text: "Fix bug: Auto-Generated worker name is not lowercased" },
       ] },
       { id: "proyek-lain", text: "Proyek Lain", children: [
         { id: "lain-pyqt", text: "Aplikasi Desktop: Input Data Inspeksi Kain" },
+        { id: "lain-seafile", text: "Third Party Image Storage (Seafile)" },
         { id: "lain-autoscaling", text: "Server: Autoscaling IDCloudHost" },
         { id: "lain-d3", text: "Visualisasi Data: Odoo Module Dependency Graph" },
       ] },
@@ -70,6 +80,15 @@ onBeforeUnmount(() => {
               <PhosphorIconLinkedinLogo class="text-3xl text-fruit-salad-100 hover:bg-[#0A66C2]">
               </PhosphorIconLinkedinLogo>
             </NuxtLink>
+            <button
+              type="button"
+              @click="copyEmail"
+              class="flex items-center gap-1 hover:text-fruit-salad-300 focus:outline-none"
+              title="Click to copy"
+            >
+              <PhosphorIconEnvelopeSimple class="text-3xl" />
+              <span>{{ emailCopied ? "Copied!" : email }}</span>
+            </button>
           </div>
         </div>
       </div>
@@ -77,24 +96,41 @@ onBeforeUnmount(() => {
       <!-- work experience -->
       <h2 id="work-experience" class="text-2xl font-bold my-4">Work Experience</h2>
 
-      <div class="flex gap-4 mb-4">
-        <NuxtImg class="w-20 h-16" src="/img/wibicon-logo.png" />
-        <div class="flex flex-col gap-4">
+      <div class="mb-4">
+        <div class="grid grid-cols-[5rem_2rem_1fr] gap-2 pb-6">
+          <div class="flex justify-center">
+            <NuxtImg class="w-20 h-16" src="/img/wibicon-logo.png" />
+          </div>
+          <div class="relative flex justify-center">
+            <div class="absolute left-1/2 -translate-x-1/2 top-3 w-px bg-fruit-salad-300" style="height: calc(100% + 1.5rem)"></div>
+            <span class="relative z-10 mt-1 w-4 h-4 rounded-full bg-fruit-salad-300 ring-4 ring-gray-100 dark:ring-slate-800"></span>
+          </div>
           <div>
             <h2 id="exp-wibicon" class="text-xl">PT Wibicon Karya Indonesia</h2>
             <h3 class="text-lg">Odoo Developer - Remote</h3>
             <p>Feb 2026 - Jan 2027 (1 tahun)</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-[5rem_2rem_1fr] gap-2 pb-6">
+          <div></div>
+          <div class="relative flex justify-center">
+            <div class="absolute left-1/2 -translate-x-1/2 top-3 w-px bg-fruit-salad-300" style="height: calc(100% + 1.5rem)"></div>
+            <span class="relative z-10 mt-1 w-4 h-4 rounded-full bg-fruit-salad-300 ring-4 ring-gray-100 dark:ring-slate-800"></span>
           </div>
           <div>
             <h3 class="text-lg">Odoo Developer</h3>
             <p>Jan 2025 - Jan 2026 (1 tahun)</p>
           </div>
         </div>
-      </div>
 
-      <div class="flex justify-between gap-4 mb-4">
-        <div class="flex gap-4">
-          <NuxtImg class="w-20 h-20" src="/img/dibimbing.png" />
+        <div class="grid grid-cols-[5rem_2rem_1fr] gap-2">
+          <div class="flex justify-center">
+            <NuxtImg class="w-20 h-20" src="/img/dibimbing.png" />
+          </div>
+          <div class="flex justify-center">
+            <span class="relative z-10 mt-1 w-4 h-4 rounded-full bg-fruit-salad-300 ring-4 ring-gray-100 dark:ring-slate-800"></span>
+          </div>
           <div>
             <h2 id="exp-dibimbing" class="text-xl">dibimbing.id</h2>
             <h3 class="text-lg">Fullstack Engineer Intern</h3>
@@ -106,24 +142,37 @@ onBeforeUnmount(() => {
 
       <!-- education -->
       <h2 id="education" class="text-2xl font-bold my-4">Education</h2>
-      
-      <div class="flex gap-4 mb-4">
-        <NuxtImg class="w-20 h-18" v-if="colorMode.preference == 'light'" src="/img/logo-binus.png" />
-        <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'dark'" src="/img/logo-binus-dark.png" />
-        <div>
-          <h3 id="edu-binus" class="text-xl">Binus University</h3>
-          <p>S1 Infomation System (Sistem Informasi)</p>
-          <p class="text-sm">2025 - Sekarang</p>
+
+      <div class="mb-4">
+        <div class="grid grid-cols-[5rem_2rem_1fr] gap-2 pb-6">
+          <div class="flex justify-center">
+            <NuxtImg class="w-20 h-18" v-if="colorMode.preference == 'light'" src="/img/logo-binus.png" />
+            <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'dark'" src="/img/logo-binus-dark.png" />
+          </div>
+          <div class="relative flex justify-center">
+            <div class="absolute left-1/2 -translate-x-1/2 top-3 w-px bg-fruit-salad-300" style="height: calc(100% + 1.5rem)"></div>
+            <span class="relative z-10 mt-1 w-4 h-4 rounded-full bg-fruit-salad-300 ring-4 ring-gray-100 dark:ring-slate-800"></span>
+          </div>
+          <div>
+            <h3 id="edu-binus" class="text-xl">Binus University</h3>
+            <p>S1 Infomation System (Sistem Informasi)</p>
+            <p class="text-sm">2025 - Sekarang</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="flex gap-4">
-        <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'light'" src="/img/logo-telu-light.png" />
-        <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'dark'" src="/img/logo-telu-dark.png" />
-        <div>
-          <h3 id="edu-telkom" class="text-xl">Telkom University</h3>
-          <p>D3 Infomation System (Sistem Informasi)</p>
-          <p class="text-sm">2021 - 2024</p>
+
+        <div class="grid grid-cols-[5rem_2rem_1fr] gap-2">
+          <div class="flex justify-center">
+            <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'light'" src="/img/logo-telu-light.png" />
+            <NuxtImg class="w-20 h-20" v-if="colorMode.preference == 'dark'" src="/img/logo-telu-dark.png" />
+          </div>
+          <div class="flex justify-center">
+            <span class="relative z-10 mt-1 w-4 h-4 rounded-full bg-fruit-salad-300 ring-4 ring-gray-100 dark:ring-slate-800"></span>
+          </div>
+          <div>
+            <h3 id="edu-telkom" class="text-xl">Telkom University</h3>
+            <p>D3 Infomation System (Sistem Informasi)</p>
+            <p class="text-sm">2021 - 2024</p>
+          </div>
         </div>
       </div>
 
@@ -134,6 +183,11 @@ onBeforeUnmount(() => {
         <div id="proyek-sierra" class="mb-10">
           <h3 class="text-2xl text-fruit-salad-300 mb-3">Proyek Odoo Pabrik Air Minum Dalam Kemasan Sierra</h3>
 
+          <p class="text-xl mb-4">
+            Proyek untuk upgrade Odoo 10 ke Odoo 18, melibatkan konversi kode Odoo 10 ke Odoo 18, migrasi data, dan
+            peningkatan serta penambahan fitur. Modul-modul yang dikembangkan melibatkan seluruh departemen pabrik.
+          </p>
+          
           <ImageGallery
             :images="[
               { src: '/about-img/sierra-ekspedisi.jpeg', caption: 'Ekspedisi' },
@@ -144,20 +198,16 @@ onBeforeUnmount(() => {
             ]"
           />
 
-          <p class="text-xl mb-4">
-            Proyek untuk upgrade Odoo 10 ke Odoo 18, melibatkan konversi kode Odoo 10 ke Odoo 18, migrasi data, dan
-            peningkatan serta penambahan fitur. Modul-modul yang dikembangkan melibatkan seluruh departemen pabrik.
-          </p>
-
+          
           <ProjectSection
             :images="[
-              '/about-img/sales1.png',
-              '/about-img/sales2.png',
-              '/about-img/sales3.png',
-              '/about-img/sales4.png',
-              '/about-img/sales5.png',
-              '/about-img/sales6.png',
-              '/about-img/sales7.png',
+              { src: '/about-img/sales1.png', caption: 'Beranda aplikasi mobile sales dengan ringkasan kunjungan dan order hari ini' },
+              { src: '/about-img/sales2.png', caption: 'Check-in kunjungan customer dengan pelacakan lokasi GPS' },
+              { src: '/about-img/sales3.png', caption: 'Keranjang belanja untuk input pesanan produk' },
+              { src: '/about-img/sales4.png', caption: 'Daftar order harian yang dibuat sales' },
+              { src: '/about-img/sales5.png', caption: 'Detail Sales Order di Odoo hasil sinkronisasi dari aplikasi mobile' },
+              { src: '/about-img/sales6.png', caption: 'Peta lokasi seluruh customer yang dikunjungi' },
+              { src: '/about-img/sales7.png', caption: 'Form input data pelanggan baru' },
             ]"
             imageAlt="Sales: Odoo x Flutter Sales App"
           >
@@ -213,19 +263,51 @@ onBeforeUnmount(() => {
             <p class="italic">Sales Order → Surat Perintah Muat → Delivery Order → Dashboard Distribusi</p>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Produksi: Revamp Input dan Dashboarding">
-            <h4 id="sierra-produksi" class="text-xl font-semibold mb-1">Produksi: Revamp Input dan Dashboarding</h4>
+          <ProjectSection
+            :images="[
+              { src: '/about-img/prodplanning0.png', caption: 'Dashboard planning produksi per mesin dalam bentuk Gantt chart' },
+              { src: '/about-img/prodplanning1.png', caption: 'Detail perencanaan produksi: kapasitas gudang dan demand period' },
+              { src: '/about-img/prodplanning2.png', caption: 'Daftar permintaan produk untuk dibuatkan Manufacturing Order' },
+              { src: '/about-img/prodplanning3.png', caption: 'Planning lines dengan jadwal, mesin, dan tombol buat MO' },
+            ]"
+            imageAlt="Produksi: Production Planning"
+          >
+            <h4 id="sierra-produksi-planning" class="text-xl font-semibold mb-1">Production Planning</h4>
+            <p>Pembuatan modul perencanaan produksi untuk menjadwalkan proses produksi air minum dalam kemasan,
+              sehingga alokasi lini dan waktu produksi lebih terstruktur.</p>
+          </ProjectSection>
+
+          <ProjectSection
+            :images="[
+              { src: '/about-img/prodoee.png', caption: 'Perhitungan OEE dan asset utilization pada Manufacturing Order' },
+              { src: '/about-img/prodoeedash1.png', caption: 'Dashboard OEE harian per production line' },
+              { src: '/about-img/prodoeedash2.png', caption: 'Ringkasan OEE per mesin dan rata-rata OEE keseluruhan' },
+              { src: '/about-img/prodoeedash3.png', caption: 'Rekap downtime dan hasil produksi bulanan per item' },
+              { src: '/about-img/prodoeedash4.png', caption: 'Grand summary OEE per mesin/item' },
+            ]"
+            imageAlt="Produksi: OEE Data Input dan Dashboarding"
+          >
+            <h4 id="sierra-produksi-oee" class="text-xl font-semibold mb-1">OEE Data Input dan Dashboarding</h4>
+            <p class="mb-2">Penambahan input data OEE (Overall Equipment Effectiveness), QC, dan Scrap pada tiap
+              proses produksi, serta dashboard harian dan bulanan untuk memonitor performa produksi.</p>
             <ul>
-              <li>Production Planning</li>
-              <li>Penambahan input informasi OEE</li>
+              <li>Input informasi OEE</li>
               <li>Input QC</li>
-              <li>Scrap</li>
+              <li>Input Scrap</li>
               <li>Dashboard Harian</li>
               <li>Dashboard Bulanan</li>
             </ul>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Teknik: Maintenance Request dan Production Downtime">
+          <ProjectSection
+            :images="[
+              { src: '/about-img/maintenancerequest.png', caption: 'Maintenance Request' },
+              { src: '/about-img/maintenancedashboard.png', caption: 'Maintenance Dashboard' },
+              { src: '/about-img/maintenancedowntimedash.png', caption: 'Downtime Dashboard' },
+              { src: '/about-img/maintenancedowntimedash2.png', caption: 'Downtime Dashboard' },
+            ]"
+            imageAlt="Teknik: Maintenance Request dan Production Downtime"
+          >
             <h4 id="sierra-teknik" class="text-xl font-semibold mb-1">Teknik: Maintenance Request dan Production Downtime</h4>
             <ul>
               <li>Maintenance Request</li>
@@ -234,20 +316,36 @@ onBeforeUnmount(() => {
             </ul>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Purchasing: Approval Dinamis">
+          <ProjectSection
+            :images="[
+              { src: '/about-img/approvaltemplate.png', caption: 'Konfigurasi template approval level untuk Purchase Order' },
+              { src: '/about-img/approvaltemplatecost.png', caption: 'Aturan approval berdasarkan estimasi nilai pembelian' },
+              { src: '/about-img/approvalformview.png', caption: 'Status approval pada form Purchase Order' },
+            ]"
+            imageAlt="Purchasing: Approval Dinamis"
+          >
             <h4 id="sierra-purchasing" class="text-xl font-semibold mb-1">Purchasing: Approval Dinamis</h4>
             <p>Sebelum purchase order dapat di-confirm harus melalui tahapan approval dulu, dan urutan approval dapat
               diedit serta dapat menggunakan beberapa kondisi.</p>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Finance">
+          <ProjectSection
+            :images="[{ src: '/about-img/dashboardforecast.png', caption: 'Dashboard cashflow forecast' }]"
+            imageAlt="Finance"
+          >
             <h4 id="sierra-finance" class="text-xl font-semibold mb-1">Finance</h4>
             <ul>
               <li>Laporan cashflow forecast</li>
             </ul>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Akunting">
+          <ProjectSection
+            :images="[
+              { src: '/about-img/accountcashflow.png', caption: 'Laporan perbandingan neraca dan arus kas' },
+              { src: '/about-img/accountcashflow2.png', caption: 'Konfigurasi laporan cashflow statement' },
+            ]"
+            imageAlt="Akunting"
+          >
             <h4 id="sierra-akunting" class="text-xl font-semibold mb-1">Akunting</h4>
             <ul>
               <li>Laporan cashflow statement</li>
@@ -266,7 +364,11 @@ onBeforeUnmount(() => {
           </p>
 
           <ProjectSection
-            :images="['/about-img/covenant1.png', '/about-img/covenant2.png', '/about-img/covenant3.png']"
+            :images="[
+              { src: '/about-img/covenant1.png', caption: 'Dashboard Covenant: status review dan dokumen per jenis' },
+              { src: '/about-img/covenant2.png', caption: 'Early Warning System untuk masa berlaku dokumen' },
+              { src: '/about-img/covenant3.png', caption: 'Alur approval dokumen permohonan Covenant' },
+            ]"
             imageAlt="E-Office dan Covenant"
           >
             <h4 id="bapelkes-eoffice" class="text-xl font-semibold mb-1">E-Office dan Covenant</h4>
@@ -292,18 +394,12 @@ onBeforeUnmount(() => {
         <div id="modul-odoo-store" class="mb-10">
           <h3 class="text-2xl text-fruit-salad-300 mb-3">Modul di Odoo Store</h3>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Third Party Image Storage (Seafile)">
-            <h4 id="lain-seafile" class="text-xl font-semibold mb-1">Third Party Image Storage (Seafile)</h4>
-            <p class="mb-2">Memungkinkan penyimpanan gambar ke storage external, meliputi gambar yang diupload dari</p>
-            <ul>
-              <li>Attachment di chatter</li>
-              <li>Attachment di field HTML</li>
-              <li>Widget khusus untuk membuat field gambar external</li>
-            </ul>
-          </ProjectSection>
-
           <ProjectSection
-            :images="['/about-img/daterangethumb.png','/about-img/daterange1.png', '/about-img/daterange2.png']"
+            :images="[
+              { src: '/about-img/daterangethumb.png', caption: 'Halaman modul Filter By Date Range di Odoo Apps Store' },
+              { src: '/about-img/daterange1.png', caption: 'Filter list invoice berdasarkan rentang tanggal dan jumlah' },
+              { src: '/about-img/daterange2.png', caption: 'Kondisi filter tanggal pada list view' },
+            ]"
             imageAlt="Search by Date Range di List View"
           >
             <h4 id="lain-daterange" class="text-xl font-semibold mb-1">Search by Date Range di List View</h4>
@@ -321,11 +417,11 @@ onBeforeUnmount(() => {
 
           <ProjectSection
             :images="[
-              '/about-img/holidaythumb.png',
-              '/about-img/holiday2.png',
-              '/about-img/holiday3.png',
-              '/about-img/holiday4.png',
-              '/about-img/holiday5.png',
+              { src: '/about-img/holidaythumb.png', caption: 'Halaman modul Indonesian Public Holiday Data di Odoo Apps Store' },
+              { src: '/about-img/holiday2.png', caption: 'Dependency modul pada Time Off (hr_holidays)' },
+              { src: '/about-img/holiday3.png', caption: 'Menu Public Holidays pada aplikasi Time Off' },
+              { src: '/about-img/holiday4.png', caption: 'Tombol dan form untuk mengambil data hari libur nasional' },
+              { src: '/about-img/holiday5.png', caption: 'Data hari libur nasional berhasil ditambahkan ke Odoo' },
             ]"
             imageAlt="Fetch Data Hari Libur Nasional Indonesia"
           >
@@ -350,7 +446,11 @@ onBeforeUnmount(() => {
           </ProjectSection>
 
           <ProjectSection
-            :images="['/about-img/exportlistthumb.png', '/about-img/exportlist1.png', '/about-img/exportlist2.png']"
+            :images="[
+              { src: '/about-img/exportlistthumb.png', caption: 'Halaman modul Export Current List View di Odoo Apps Store' },
+              { src: '/about-img/exportlist1.png', caption: 'Tombol export list view karyawan ke Excel' },
+              { src: '/about-img/exportlist2.png', caption: 'Hasil export data ke file Excel' },
+            ]"
             imageAlt="Export List View to Excel"
           >
             <h4 id="lain-exportexcel" class="text-xl font-semibold mb-1">Export List View to Excel</h4>
@@ -371,9 +471,37 @@ onBeforeUnmount(() => {
         <div id="opensource" class="mb-10">
           <h3 class="text-2xl text-fruit-salad-300 mb-3">Kontribusi Open Source</h3>
 
-          <ProjectSection :images="['/about-img/odoo.png']" imageAlt="Kontribusi Open Source (non Odoo)">
-            <h4 id="lain-opensource" class="text-xl font-semibold mb-1">Kontribusi Open Source (non Odoo)</h4>
-            <p class="italic">Belum ada</p>
+          <ProjectSection
+            :images="[
+              { src: '/about-img/contributor.png', caption: 'Release notes Nitro v2.12.3 mencantumkan kontribusi Falestio' },
+              { src: '/about-img/opensourceissue1.png', caption: 'Issue #3488 yang dilaporkan terkait nama worker Cloudflare' },
+              { src: '/about-img/opensourceissue2.png', caption: 'Log error deploy akibat auto-generated worker name tidak lowercase' },
+              { src: '/about-img/opensourcepr.png', caption: 'Pull request #3490 perbaikan bug yang telah di-merge' },
+            ]"
+            imageAlt="Fix bug: Auto-Generated worker name is not lowercased"
+          >
+            <h4 id="lain-opensource" class="text-xl font-semibold mb-1">
+              Fix bug: Auto-Generated worker name is not lowercased
+            </h4>
+            <p class="mb-2">Kontribusi pada proyek open source Nitro (nitrojs/nitro).</p>
+
+            <div class="flex flex-col gap-1">
+              <NuxtLink to="https://github.com/nitrojs/nitro/issues/3488" target="_blank"
+                class="inline-block text-fruit-salad-300 hover:text-fruit-salad-700 font-medium hover:underline">
+                <span class="flex items-center gap-1">
+                  Issue #3488
+                  <PhosphorIconArrowUpRight />
+                </span>
+              </NuxtLink>
+
+              <NuxtLink to="https://github.com/nitrojs/nitro/pull/3490" target="_blank"
+                class="inline-block text-fruit-salad-300 hover:text-fruit-salad-700 font-medium hover:underline">
+                <span class="flex items-center gap-1">
+                  PR #3490
+                  <PhosphorIconArrowUpRight />
+                </span>
+              </NuxtLink>
+            </div>
           </ProjectSection>
         </div>
 
@@ -381,7 +509,12 @@ onBeforeUnmount(() => {
         <div id="proyek-lain">
           <h3 class="text-2xl text-fruit-salad-300 mb-3">Proyek Lain</h3>
 
-          <ProjectSection :images="['/about-img/pyqt-logo.png']"
+          <ProjectSection
+            :images="[
+              { src: '/about-img/inspeksi1.jpeg', caption: 'Tampilan aplikasi input inspeksi roll kain' },
+              { src: '/about-img/inspeksi2.jpeg', caption: 'Petugas menggunakan aplikasi di lantai produksi' },
+              { src: '/about-img/inspeksi3.jpeg', caption: 'Tim melakukan uji coba aplikasi pada mesin inspeksi kain' },
+            ]"
             imageAlt="Aplikasi Desktop: Input Data Inspeksi Kain Terintegrasi Odoo ERP">
             <h4 id="lain-pyqt" class="text-xl font-semibold mb-1">
               Aplikasi Desktop: Input Data Inspeksi Kain Terintegrasi Odoo ERP
@@ -406,7 +539,27 @@ onBeforeUnmount(() => {
             </ul>
           </ProjectSection>
 
-          <ProjectSection :images="['/img/linux-traefik-grafana-prometheus-idcloudhost.png']"
+          <ProjectSection
+            :images="[
+              { src: '/about-img/odooseafile1.png', caption: 'Attachment gambar tersimpan di Seafile melalui chatter Odoo' },
+              { src: '/about-img/odooseafile2.png', caption: 'Struktur folder penyimpanan file di Seafile' },
+              { src: '/about-img/odooseafile3.png', caption: 'Konfigurasi koneksi akun Seafile di Odoo Settings' },
+            ]"
+            imageAlt="Third Party Image Storage (Seafile)"
+          >
+            <h4 id="lain-seafile" class="text-xl font-semibold mb-1">Third Party Image Storage (Seafile)</h4>
+            <p class="mb-2">Memungkinkan penyimpanan gambar ke storage external, meliputi gambar yang diupload dari</p>
+            <ul>
+              <li>Attachment di chatter</li>
+              <li>Attachment di field HTML</li>
+              <li>Widget khusus untuk membuat field gambar external</li>
+            </ul>
+          </ProjectSection>
+
+          <ProjectSection
+            :images="[
+              { src: '/img/linux-traefik-grafana-prometheus-idcloudhost.png', caption: 'Stack Linux, Traefik, Grafana, Prometheus, dan IDCloudHost yang digunakan' },
+            ]"
             imageAlt="Server: Implementasi Autoscaling Manual untuk Server IDCloudHost">
             <h4 id="lain-autoscaling" class="text-xl font-semibold mb-1">
               Server: Implementasi Autoscaling Manual untuk Server IDCloudHost
@@ -433,7 +586,11 @@ onBeforeUnmount(() => {
             </ul>
           </ProjectSection>
 
-          <ProjectSection :images="['/about-img/d3-logo.png']" imageAlt="Visualisasi Data: Odoo Module Dependency Graph">
+          <ProjectSection
+            :images="[
+              { src: '/about-img/module-highlighting.png', caption: 'Visualisasi graph dependency modul Odoo dengan fitur highlighting' },
+            ]"
+            imageAlt="Visualisasi Data: Odoo Module Dependency Graph">
             <h4 id="lain-d3" class="text-xl font-semibold mb-1">
               Visualisasi Data: Odoo Module Dependency Graph
             </h4>

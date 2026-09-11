@@ -24,6 +24,10 @@ export default defineNuxtConfig({
     name: "Falestio personal website",
   },
 
+  routeRules: {
+    "/": { redirect: "/about" },
+  },
+
   colorMode: {
     preference: 'system'
   },

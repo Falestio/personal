@@ -22,16 +22,39 @@ function next() {
 function prev() {
   currentIndex.value = (currentIndex.value - 1 + slides.value.length) % slides.value.length;
 }
+
+function handleKeydown(e) {
+  if (!open.value) return;
+  if (e.key === "Escape") open.value = false;
+  else if (e.key === "ArrowLeft") prev();
+  else if (e.key === "ArrowRight") next();
+}
+
+onMounted(() => window.addEventListener("keydown", handleKeydown));
+onUnmounted(() => window.removeEventListener("keydown", handleKeydown));
 </script>
 
 <template>
   <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-    <button v-for="(slide, i) in slides" :key="i" type="button" @click="openAt(i)" class="focus:outline-none">
+    <button
+      v-for="(slide, i) in slides"
+      :key="i"
+      type="button"
+      @click="openAt(i)"
+      class="group relative overflow-hidden rounded focus:outline-none"
+    >
       <img
         :src="slide.src"
         :alt="slide.caption"
-        class="w-full aspect-video object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
+        class="w-full aspect-video object-cover rounded cursor-pointer transition-transform duration-300 group-hover:scale-110"
       />
+      <div
+        class="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/30"
+      >
+        <PhosphorIconMagnifyingGlassPlus
+          class="text-3xl text-white opacity-0 scale-75 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"
+        />
+      </div>
     </button>
   </div>
 
@@ -44,7 +67,7 @@ function prev() {
       <div class="relative bg-gray-100 dark:bg-slate-800 rounded-lg max-w-[95vw] max-h-[90vh] overflow-auto p-6">
         <UButton
           v-if="slides.length > 1"
-          variant="ghost"
+          color="primary"
           class="fixed left-4 top-1/2 -translate-y-1/2 z-10"
           @click="prev"
         >
@@ -52,12 +75,16 @@ function prev() {
         </UButton>
 
         <div class="flex items-center justify-center">
-          <img :src="slides[currentIndex].src" :alt="slides[currentIndex].caption" class="rounded" />
+          <img
+            :src="slides[currentIndex].src"
+            :alt="slides[currentIndex].caption"
+            class="max-h-[70vh] max-w-full object-contain rounded"
+          />
         </div>
 
         <UButton
           v-if="slides.length > 1"
-          variant="ghost"
+          color="primary"
           class="fixed right-4 top-1/2 -translate-y-1/2 z-10"
           @click="next"
         >
