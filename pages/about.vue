@@ -89,6 +89,14 @@ onBeforeUnmount(() => {
               <PhosphorIconEnvelopeSimple class="text-3xl" />
               <span>{{ emailCopied ? "Copied!" : email }}</span>
             </button>
+            <NuxtLink
+              to="/cv"
+              target="_blank"
+              class="flex items-center gap-1 hover:text-fruit-salad-300 focus:outline-none"
+            >
+              <PhosphorIconDownloadSimple class="text-lg" />
+              Download CV
+            </NuxtLink>
           </div>
         </div>
       </div>
